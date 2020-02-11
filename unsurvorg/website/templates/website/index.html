@@ -1,0 +1,25 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>unsurv</title>
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+
+    </head>
+    <body>
+        <div>
+            <h1>unsurv</h1>
+        </div>
+
+        {% for article in latest_article_list %}
+        <div>
+            <li><a href="/blog/{{ article.id }}/">{{ article.article_title }}</a></li>
+            <p>
+                {{article.article_text}}
+            </p>
+        </div>
+
+        {% endfor %}
+
+    </body>
+</html>
