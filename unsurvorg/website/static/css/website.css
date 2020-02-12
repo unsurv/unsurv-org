@@ -1,3 +1,32 @@
+body {
+    background-color: #212121;
+}
+
+div {
+    margin: auto
+}
+
 h1, h2 {
-    color: #C25100;
+    color: #bababa;
+    text-align: center;
+}
+
+h1 {
+    font-size: 400%;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+    color: #bababa;
+}
+
+.embedded_video {
+    background: lightblue;
+    width: 640px;
+}
+
+.center {
+    margin: auto;
+    width: 33%;
 }

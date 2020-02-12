@@ -13,10 +13,30 @@
 
         {% for article in latest_article_list %}
         <div>
-            <li><a href="/blog/{{ article.id }}/">{{ article.article_title }}</a></li>
-            <p>
+            <h2><a href="/blog/{{ article.id }}/">{{ article.article_title }}</a></h2>
+            <p class="center">
                 {{article.article_text}}
             </p>
+
+            {% if article.embedded_video_url %}
+
+            <div class="embedded_video">
+                <iframe src="{{ article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+
+
+
+            {% endif %}
+
+            {% if article.text_after_video %}
+
+            <p class="center">
+                {{article.text_after_video}}
+            </p>
+
+            {% endif %}
+
+
         </div>
 
         {% endfor %}

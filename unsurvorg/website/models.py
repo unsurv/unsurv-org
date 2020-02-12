@@ -10,6 +10,7 @@ class Article(models.Model):
     article_title = models.CharField(max_length=200)
     article_text = models.TextField()
     embedded_video_url = models.URLField()
+    embedded_video_title = models.CharField(max_length=120, default="")
     text_after_video = models.TextField(default="")
     keep_top_position = models.BooleanField(default=False)
 
