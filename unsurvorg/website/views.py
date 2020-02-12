@@ -6,13 +6,30 @@ from django.template import loader
 
 
 def index(request):
-    latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
-    template = loader.get_template('website/index.html')
+
+    raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    website_language = select_language(request.META.get("HTTP_ACCEPT_LANGUAGE"))
+
+    if website_language != "en":
+        pass
+    else:
+        latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
+
+
+
     context = {
         'latest_article_list': latest_article_list,
+        'language_code': raw_language_code,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'website/index.html', context)
 
 
 def detail(request, article_id):
     return HttpResponse("You're looking at article with id:  %s." % article_id)
+
+
+def select_language(http_accept_language_string):
+    if "de" in http_accept_language_string:
+        return "de"
+    else:
+        return "en"

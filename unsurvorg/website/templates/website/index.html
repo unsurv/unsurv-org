@@ -4,17 +4,20 @@
     <head>
         <title>unsurv</title>
         <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
 
     </head>
     <body>
         <div>
             <h1>unsurv</h1>
+            <h1>{{language_code}}</h1>
+
         </div>
 
         {% for article in latest_article_list %}
         <div>
             <h2><a href="/blog/{{ article.id }}/">{{ article.article_title }}</a></h2>
-            <p class="center">
+            <p class="center article_text">
                 {{article.article_text}}
             </p>
 
@@ -30,7 +33,7 @@
 
             {% if article.text_after_video %}
 
-            <p class="center">
+            <p class="center article_text">
                 {{article.text_after_video}}
             </p>
 
@@ -40,6 +43,22 @@
         </div>
 
         {% endfor %}
+
+
+    <div class="footer">
+
+
+        <div class="split left">
+            <p><a class="unmarked_link" href="/contact">Contact</a></p>
+        </div>
+
+         <div class="split right">
+            <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
+        </div>
+
+
+
+    </div>
 
     </body>
 </html>

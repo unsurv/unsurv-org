@@ -7,15 +7,12 @@ import datetime
 
 
 class Article(models.Model):
+    article_language = models.CharField(max_length=2, default="en")
     article_title = models.CharField(max_length=200)
     article_text = models.TextField()
     embedded_video_url = models.URLField()
-    embedded_video_title = models.CharField(max_length=120, default="")
     text_after_video = models.TextField(default="")
     keep_top_position = models.BooleanField(default=False)
-
-    translated_title = models.CharField(max_length=200)
-    translated_text = models.TextField()
 
     publication_datetime = models.DateTimeField("date_published", auto_now=True)
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
@@ -25,6 +22,20 @@ class Article(models.Model):
 
     def was_published_recently(self):
         return self.publication_datetime >= timezone.now() - datetime.timedelta(days=1)
+
+
+class TranslatedArticle(models.Model):
+    article = models.ForeignKey(Article, related_name="translations", on_delete="CASCADE")
+    article_language = models.CharField(max_length=2)
+    article_title = models.CharField(max_length=200)
+    article_text = models.TextField()
+    embedded_video_url = models.URLField()
+    text_after_video = models.TextField(default="")
+    keep_top_position = models.BooleanField(default=False)
+
+    publication_datetime = models.DateTimeField("date_published", auto_now=True)
+    last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
+
 
 
 """

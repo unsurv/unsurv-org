@@ -2,10 +2,6 @@ body {
     background-color: #212121;
 }
 
-div {
-    margin: auto
-}
-
 h1, h2 {
     color: #bababa;
     text-align: center;
@@ -15,7 +11,11 @@ h1 {
     font-size: 400%;
 }
 
-p {
+h2 {
+    font-size: 250%;
+}
+
+.article_text {
     text-align: justify;
     text-justify: inter-word;
     color: #bababa;
@@ -27,6 +27,42 @@ p {
 }
 
 .center {
-    margin: auto;
-    width: 33%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.embedded_video {
+    margin: auto
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: #2d2d2d;
+    color: #b1b1b1;
+
+}
+
+.unmarked_link {
+    color: #bababa;
+    text-decoration: none;
+}
+
+.split {
+  width: 50%;
+  position: fixed;
+  bottom: 0;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
 }
