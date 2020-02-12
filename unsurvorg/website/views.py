@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Article
+from .models import Article, TranslatedArticle
 from django.template import loader
 # Create your views here.
 
@@ -11,7 +11,13 @@ def index(request):
     website_language = select_language(request.META.get("HTTP_ACCEPT_LANGUAGE"))
 
     if website_language != "en":
-        pass
+        latest_article_list = TranslatedArticle.objects \
+                                  .filter(article_language=website_language) \
+                                  .order_by('-publication_datetime')[:5]
+
+        if len(latest_article_list) == 0:
+            latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
+
     else:
         latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
 
