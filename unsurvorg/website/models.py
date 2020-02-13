@@ -11,7 +11,7 @@ class Article(models.Model):
     article_title = models.CharField(max_length=200)
     article_text = models.TextField()
     embedded_video_url = models.URLField()
-    text_after_video = models.TextField(default="")
+    text_after_media = models.TextField(default="")
     keep_top_position = models.BooleanField(default=False)
 
     publication_datetime = models.DateTimeField("date_published", auto_now=True)
@@ -35,6 +35,17 @@ class TranslatedArticle(models.Model):
 
     publication_datetime = models.DateTimeField("date_published", auto_now=True)
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
+
+    def __str__(self):
+        return self.article_title
+
+
+class Images(models.Model):
+    article = models.ForeignKey(Article, related_name="images", on_delete="CASCADE")
+
+    low_res = models.ImageField(blank=True, upload_to="images/low_res")
+    high_res = models.ImageField(blank=True, upload_to="images/high_res")
+
 
 
 

@@ -4,14 +4,16 @@ body {
 
 h1, h2 {
     color: #bababa;
-    text-align: center;
+
 }
 
 h1 {
     font-size: 400%;
+    text-align: center;
 }
 
 h2 {
+    text-align: left;
     font-size: 250%;
 }
 
@@ -22,8 +24,13 @@ h2 {
 }
 
 .embedded_video {
-    background: lightblue;
     width: 640px;
+    margin: auto;
+
+}
+
+.image {
+    margin: auto;
 }
 
 .center {
@@ -32,9 +39,7 @@ h2 {
     width: 50%;
 }
 
-.embedded_video {
-    margin: auto
-}
+
 
 .footer {
     position: fixed;

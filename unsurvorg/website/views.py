@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Article
+from .models import Article, Images
 from django.template import loader
 # Create your views here.
 
@@ -8,16 +8,19 @@ from django.template import loader
 def index(request):
 
     raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    website_language = select_language(request.META.get("HTTP_ACCEPT_LANGUAGE"))
+    accepted_language = select_language(request.META.get("HTTP_ACCEPT_LANGUAGE"))
 
-    if website_language != "en":
+    latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
+
+    if accepted_language != "en":
         pass
     else:
         latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
 
-
+    # images = Images.objects.all()[0]
 
     context = {
+        'language_preference': accepted_language,
         'latest_article_list': latest_article_list,
         'language_code': raw_language_code,
     }
