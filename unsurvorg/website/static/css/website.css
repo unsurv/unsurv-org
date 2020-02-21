@@ -1,32 +1,55 @@
+@font-face {
+    font-family: 'charter regular'; /*a name to be used later*/
+    src: url('../fonts/Charter Regular.ttf'); /*URL to font*/
+}
+
 body {
     background-color: #212121;
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: #bababa;
 
 }
 
 h1 {
-    font-size: 400%;
+    font-size: 65px;
     text-align: center;
 }
 
 h2 {
     text-align: left;
-    font-size: 250%;
+    font-size: 45px;
+    padding: 30px;
+}
+
+h3 {
+    font-size: 45px;
+}
+
+.article_container {
+    margin-top: 65px;
+    margin-bottom: 65px;
 }
 
 .article_text {
     text-align: justify;
     text-justify: inter-word;
     color: #bababa;
+
+    font-family: "charter regular";
+    font-size: 25px;
+
 }
 
 .embedded_video {
     width: 640px;
     margin: auto;
 
+}
+
+.header_image {
+    margin: 5px;
 }
 
 .image {
@@ -39,7 +62,21 @@ h2 {
     width: 50%;
 }
 
+.box {
+  float: left;
+  width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
+}
 
+.header {
+    width:100%;
+    height: 50px;
+    background-color: #2d2d2d;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
 
 .footer {
     position: fixed;

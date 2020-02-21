@@ -8,11 +8,23 @@
 
     </head>
     <body>
-        <div>
-            <h1>unsurv</h1>
-            <h1>{{language_code}}</h1>
+         <div class="header">
+            <div class="box">
 
+            <a class="header_image" href="/">
+                <img class="header_image" src="{%  static 'unsurv_header.png' %}" width="auto" height="40">
+            </a>
         </div>
+
+         <div class="box">
+            <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
+        </div>
+
+        <div class="box">
+            <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
+        </div>
+        </div>
+
 
         {% for article in latest_article_list %}
         <div>
@@ -48,10 +60,10 @@
 
 
 
-            {% if article.text_after_video %}
+            {% if article.text_after_media %}
 
             <p class="center article_text">
-                {{article.text_after_video}}
+                {{article.text_after_media}}
             </p>
 
             {% endif %}
@@ -64,12 +76,15 @@
 
     <div class="footer">
 
-
-        <div class="split left">
-            <p><a class="unmarked_link" href="/contact">Contact & Privacy</a></p>
+        <div class="box">
+            <p><a class="unmarked_link" href="/contact">Contact</a></p>
         </div>
 
-         <div class="split right">
+         <div class="box">
+            <p><a class="unmarked_link" href="/privacy">Privacy</a></p>
+        </div>
+
+        <div class="box">
             <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
         </div>
 
