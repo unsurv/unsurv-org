@@ -39,6 +39,7 @@ h3 {
 
     font-family: "charter regular";
     font-size: 25px;
+    margin-bottom: 65px;
 
 }
 
@@ -64,6 +65,7 @@ h3 {
 
 .box {
   float: left;
+  height: 50px;
   width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
 }
 

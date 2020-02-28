@@ -7,18 +7,19 @@ import datetime
 
 
 class Article(models.Model):
-    article_language = models.CharField(max_length=2, default="en")
-    article_title = models.CharField(max_length=200)
-    article_text = models.TextField()
-    embedded_video_url = models.URLField()
-    text_after_media = models.TextField(default="")
+    language = models.CharField(max_length=2, default="en")
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    abstract = models.CharField(max_length=360, default="")
+    embedded_video_url = models.URLField(blank=True)
+    text_after_media = models.TextField(blank=True, default="")
     keep_top_position = models.BooleanField(default=False)
 
-    publication_datetime = models.DateTimeField("date_published", auto_now=True)
+    publication_datetime = models.DateTimeField("date_published")
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
 
     def __str__(self):
-        return self.article_title
+        return self.title
 
     def was_published_recently(self):
         return self.publication_datetime >= timezone.now() - datetime.timedelta(days=1)
@@ -26,14 +27,15 @@ class Article(models.Model):
 
 class TranslatedArticle(models.Model):
     article = models.ForeignKey(Article, related_name="translations", on_delete="CASCADE")
-    article_language = models.CharField(max_length=2)
-    article_title = models.CharField(max_length=200)
-    article_text = models.TextField()
-    embedded_video_url = models.URLField()
-    text_after_video = models.TextField(default="")
+    language = models.CharField(max_length=2)
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    abstract = models.CharField(max_length=360, default="")
+    embedded_video_url = models.URLField(blank=True)
+    text_after_video = models.TextField(blank=True, default="")
     keep_top_position = models.BooleanField(default=False)
 
-    publication_datetime = models.DateTimeField("date_published", auto_now=True)
+    publication_datetime = models.DateTimeField("date_published")
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
 
     def __str__(self):

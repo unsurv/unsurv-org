@@ -31,6 +31,22 @@ def detail(request, article_id):
     return HttpResponse("You're looking at article with id:  %s." % article_id)
 
 
+def blog_overview(request):
+
+    raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    accepted_language = select_language(request.META.get("HTTP_ACCEPT_LANGUAGE"))
+
+    blog_overview_list = Article.objects.order_by('-publication_datetime')[:20]
+
+    context = {
+        'language_preference': accepted_language,
+        'blog_overview_list': blog_overview_list,
+        'language_code': raw_language_code,
+    }
+
+    return render(request, 'website/blog_overview.html', context)
+
+
 def select_language(http_accept_language_string):
     if "de" in http_accept_language_string:
         return "de"

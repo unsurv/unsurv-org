@@ -26,48 +26,16 @@
         </div>
 
 
-        {% for article in latest_article_list %}
+        {% for article in blog_overview_list %}
         <div>
-            <h2 class="center"><a href="/blog/{{ article.id }}/">{{ article.title }}</a></h2>
-            <p class="center article_text">
-                {{article.text}}
-            </p>
-
-            {% if article.embedded_video_url %}
-
-            <div class="embedded_video">
-                <iframe src="{{ article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-
-
-
-            {% endif %}
-
-
-
-            {% for image in article.images.all %}
-
-            <a class="image" href="{{ image.high_res.url }}">
-                <img src="{{ image.low_res.url }}" width="640" height="360">
-            </a>
-
-            <p class="center image_description">
-                {{ image.description }}
-            </p>
-
-            {% endfor %}
-
-
-
-
-            {% if article.text_after_media %}
+            <h2 class="center"><a class="unmarked_link" href="/blog/{{ article.id }}/">{{ article.title }}</a></h2>
 
             <p class="center article_text">
-                {{article.text_after_media}}
+                {{article.publication_datetime}}
             </p>
-
-            {% endif %}
-
+            <p class="center article_text">
+                {{article.abstract}}
+            </p>
 
         </div>
 
