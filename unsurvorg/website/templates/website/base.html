@@ -1,0 +1,50 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>unsurv</title>
+        <link rel="stylesheet" href="{% static 'css/website.css' %}">
+        <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+
+    </head>
+    <body>
+         <div class="header">
+            <div class="box">
+
+            <a class="header_image" href="/">
+                <img class="header_image" src="{%  static 'unsurv_header.png' %}" width="auto" height="40">
+            </a>
+        </div>
+
+         <div class="box">
+            <p><a class="unmarked_link" href="/blog">Blog</a></p>
+        </div>
+
+        <div class="box">
+            <p><a class="unmarked_link" href="https://vimeo.com/unsurv">Videos</a></p>
+        </div>
+        </div>
+
+
+         {% block content %}
+         {% endblock %}
+
+
+    <div class="footer">
+
+        <div class="box">
+            <p><a class="unmarked_link" href="/contact">Contact / Kontakt</a></p>
+        </div>
+
+         <div class="box">
+            <p><a class="unmarked_link" href="/privacy">Privacy / Datenschutz</a></p>
+        </div>
+
+        <div class="box">
+            <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
+        </div>
+
+    </div>
+
+    </body>
+</html>
