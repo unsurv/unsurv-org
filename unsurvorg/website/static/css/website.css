@@ -12,6 +12,10 @@ h1, h2, h3 {
     color: #bababa;
 
 }
+.main_title_container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 .main_title{
     font-size: 300%;
@@ -19,6 +23,15 @@ h1, h2, h3 {
 }
 
 .sub_title{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.navigation {
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
     text-align: center;
 }
 
@@ -41,7 +54,7 @@ h1, h2, h3 {
     text-align: center;
     color: #bababa;
 
-    font-size: 110%;
+    font-size: 130%;
     font-family: "charter regular";
     margin-bottom: 65px;
     margin-top: 65px;
@@ -50,14 +63,12 @@ h1, h2, h3 {
 .top_embedded_video {
     width: 640px;
     margin: auto;
-
 }
 
 
 .embedded_video {
     width: 640px;
     margin: auto;
-
 }
 
 .header_image {
@@ -67,7 +78,6 @@ h1, h2, h3 {
 h2.header_text{
     font-size: xxx-large
     font-weight: bold;
-
 }
 
 .image {
@@ -94,7 +104,6 @@ h2.header_text{
     width: 100%;
     text-align: center;
     background-color: #2d2d2d;
-
 }
 
 .unmarked_link {
