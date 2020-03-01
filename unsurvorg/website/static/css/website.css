@@ -5,6 +5,7 @@
 
 body {
     background-color: #212121;
+
 }
 
 h1, h2, h3 {
@@ -12,19 +13,13 @@ h1, h2, h3 {
 
 }
 
-h1 {
-    font-size: 65px;
+.main_title{
+    font-size: 300%;
     text-align: center;
 }
 
-h2 {
-    text-align: left;
-    font-size: 45px;
-    padding: 30px;
-}
-
-h3 {
-    font-size: 45px;
+.sub_title{
+    text-align: center;
 }
 
 .article_container {
@@ -39,9 +34,25 @@ h3 {
 
     font-family: "charter regular";
     font-size: 25px;
-    margin-bottom: 65px;
 
 }
+
+.top_article_abstract {
+    text-align: center;
+    color: #bababa;
+
+    font-size: 110%;
+    font-family: "charter regular";
+    margin-bottom: 65px;
+    margin-top: 65px;
+}
+
+.top_embedded_video {
+    width: 640px;
+    margin: auto;
+
+}
+
 
 .embedded_video {
     width: 640px;
@@ -50,7 +61,13 @@ h3 {
 }
 
 .header_image {
-    margin: 5px;
+    margin: 0 auto;
+}
+
+h2.header_text{
+    font-size: xxx-large
+    font-weight: bold;
+
 }
 
 .image {
@@ -65,30 +82,18 @@ h3 {
 
 .box {
   float: left;
-  height: 50px;
   width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
 }
 
-.header {
-    width:100%;
-    height: 50px;
-    background-color: #2d2d2d;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: center;
-}
 
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: auto;
     width: 100%;
     text-align: center;
     background-color: #2d2d2d;
-    color: #b1b1b1;
 
 }
 

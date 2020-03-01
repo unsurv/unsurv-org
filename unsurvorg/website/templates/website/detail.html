@@ -3,27 +3,16 @@
 
 {% block content %}
 
-        <div class="article_container">
 
 
-            <p class="center top_article_abstract">
-                {{top_article.abstract | urlize}}
-            </p>
+        <div>
 
-
-            {% if top_article.embedded_video_url %}
-
-            <div class="top_embedded_video">
-                <iframe src="{{ top_article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-
-            {% endif %}
 
 
         </div>
 
         {% for article in latest_article_list %}
-        <div class="article_container">
+        <div>
             <h2 class="center"><a class="unmarked_link" href="/blog/{{ article.id }}/">{{ article.title }}</a></h2>
             <p class="center article_text">
                 {{article.abstract | urlize}}

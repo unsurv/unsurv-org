@@ -12,6 +12,8 @@ def index(request):
 
     latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
 
+    top_article = Article.objects.get(keep_top_position=True)
+
     if accepted_language != "en":
         pass
     else:
@@ -21,6 +23,7 @@ def index(request):
 
     context = {
         'language_preference': accepted_language,
+        'top_article': top_article,
         'latest_article_list': latest_article_list,
         'language_code': raw_language_code,
     }

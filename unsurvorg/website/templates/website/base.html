@@ -8,41 +8,20 @@
 
     </head>
     <body>
-         <div class="header">
-            <div class="box">
 
-            <a class="header_image" href="/">
-                <img class="header_image" src="{%  static 'unsurv_header.png' %}" width="auto" height="40">
-            </a>
-        </div>
-
-         <div class="box">
-            <p><a class="unmarked_link" href="/blog">Blog</a></p>
-        </div>
-
-        <div class="box">
-            <p><a class="unmarked_link" href="https://vimeo.com/unsurv">Videos</a></p>
-        </div>
-        </div>
-
+    <div class="article_container">
+        <h1 class="main_title center">unsurv.org</h1>
+        <h3 class="sub_title center">exposing video surveillance</h3>
+    </div>
 
          {% block content %}
          {% endblock %}
 
-
     <div class="footer">
 
-        <div class="box">
-            <p><a class="unmarked_link" href="/contact">Contact / Kontakt</a></p>
-        </div>
-
-         <div class="box">
-            <p><a class="unmarked_link" href="/privacy">Privacy / Datenschutz</a></p>
-        </div>
-
-        <div class="box">
-            <p><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></p>
-        </div>
+        <h4 class="box"><a class="unmarked_link" href="/contact">Contact / Kontakt</a></h4>
+        <h4 class="box"><a class="unmarked_link" href="/privacy">Privacy / Datenschutz</a></h4>
+        <h4 class="box"><a class="unmarked_link" href="https://github.com/unsurv">GitHub</a></h4>
 
     </div>
 
