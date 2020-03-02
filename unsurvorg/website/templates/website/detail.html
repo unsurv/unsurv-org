@@ -5,17 +5,15 @@
 
 
 
-        <div>
+        <div class="article_container">
 
 
 
-        </div>
 
-        {% for article in latest_article_list %}
-        <div>
-            <h2 class="center"><a class="unmarked_link" href="/blog/{{ article.id }}/">{{ article.title }}</a></h2>
+            <h1 class="center">{{ article.title }}</h1>
+
             <p class="center article_text">
-                {{article.abstract | urlize}}
+                {{article.text | urlize}}
             </p>
 
             {% if article.embedded_video_url %}
@@ -53,9 +51,7 @@
 
             {% endif %}
 
-
         </div>
 
-        {% endfor %}
 
 {% endblock %}

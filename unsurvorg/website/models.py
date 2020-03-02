@@ -18,8 +18,13 @@ class Article(models.Model):
     publication_datetime = models.DateTimeField("date_published")
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
 
+    slug = models.SlugField(null=False, unique=True)
+
     def __str__(self):
         return self.title
+
+    def get_slug_url(self):
+        return reversed('detail', kwargs={'slug': self.slug})
 
     def was_published_recently(self):
         return self.publication_datetime >= timezone.now() - datetime.timedelta(days=1)
