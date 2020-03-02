@@ -21,10 +21,12 @@ class Article(models.Model):
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
-        return self.title
+        return self.slug
 
-    def get_slug_url(self):
-        return reversed('detail', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        # allows admin site to directly link to currently edited article
+        from django.urls import reverse
+        return reverse('detail_slug', kwargs={'slug': self.slug})
 
     def was_published_recently(self):
         return self.publication_datetime >= timezone.now() - datetime.timedelta(days=1)
@@ -43,8 +45,10 @@ class TranslatedArticle(models.Model):
     publication_datetime = models.DateTimeField("date_published")
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
 
+    slug = models.SlugField(null=False)
+
     def __str__(self):
-        return self.article_title
+        return self.title
 
 
 class Images(models.Model):
@@ -52,7 +56,6 @@ class Images(models.Model):
 
     low_res = models.ImageField(blank=True, upload_to="images/low_res")
     high_res = models.ImageField(blank=True, upload_to="images/high_res")
-
 
 
 

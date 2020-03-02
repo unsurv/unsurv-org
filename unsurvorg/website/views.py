@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Article
+from .models import Article, TranslatedArticle
 
 
 # Create your views here.
@@ -11,27 +11,29 @@ def index(request):
     # get browser language preference
     raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    accepted_language = select_language(raw_language_code)
+    language_preference = select_language(raw_language_code)
 
     # get latest articles
-    latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
 
-    top_article = Article.objects.get(keep_top_position=True)
+    # TODO later query if translations for preference is available for now only two languages will be supported (de/en)
+    if language_preference == "de":
 
-    # TODO display german translation if de in accepted browser languages
-    if accepted_language != "en":
-        pass
+        latest_article_list = TranslatedArticle.objects.filter(language=language_preference) \
+                                  .order_by('-publication_datetime')[:5]
+
+        top_article = TranslatedArticle.objects.filter(language=language_preference) \
+            .get(keep_top_position=True)
     else:
+        top_article = Article.objects.get(keep_top_position=True)
         latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
 
-    # images = Images.objects.all()[0]
-
     context = {
-        'language_preference': accepted_language,
+        'language_preference': language_preference,
         'top_article': top_article,
         'latest_article_list': latest_article_list,
         'language_code': raw_language_code,
     }
+
     return render(request, 'website/index.html', context)
 
 
@@ -45,28 +47,37 @@ def detail_slug(request, slug):
     # get browser language preference
     raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    accepted_language = select_language(raw_language_code)
+    language_preference = select_language(raw_language_code)
 
-    article = get_object_or_404(Article, slug=slug)
+    if language_preference == "de":
+        article = TranslatedArticle.objects.filter(language=language_preference).get(slug=slug)
+    else:
+        article = get_object_or_404(Article, slug=slug)
 
     context = {
-        'language_preference': accepted_language,
+        'language_preference': language_preference,
         'article': article,
         'language_code': raw_language_code,
     }
+
     return render(request, 'website/detail.html', context)
 
 
 def blog_overview(request):
 
     raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    accepted_language = select_language(raw_language_code)
+    language_preference = select_language(raw_language_code)
 
+    if language_preference == "de":
 
-    blog_overview_list = Article.objects.order_by('-publication_datetime')[:20]
+        blog_overview_list = TranslatedArticle.objects.filter(language=language_preference) \
+                                 .order_by('-publication_datetime')[:20]
+
+    else:
+        blog_overview_list = Article.objects.order_by('-publication_datetime')[:20]
 
     context = {
-        'language_preference': accepted_language,
+        'language_preference': language_preference,
         'blog_overview_list': blog_overview_list,
         'language_code': raw_language_code,
     }

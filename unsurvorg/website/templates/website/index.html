@@ -3,54 +3,68 @@
 
 {% block content %}
 
-        <div class="article_container">
-
-
-            <p class="center top_article_abstract">
-                {{top_article.abstract | urlize}}
-            </p>
-
-
-            {% if top_article.embedded_video_url %}
-
-            <div class="top_embedded_video">
-                <iframe src="{{ top_article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-
-            {% endif %}
-
-
-        </div>
-
-
-        <div class="article_container">
-            <h2 class="sub_title center">Latest Blog Entries:</h2>
-        </div>
-
-        {% for article in latest_article_list %}
 
 <div class="article_container">
-            <h1 class="center"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h1>
 
-            <p class="center article_text">
-                {{article.publication_datetime |date:"d M, Y"}}
-            </p>
-            <p class="center article_text">
-                {{article.abstract}}
-            </p>
+    <h2 style="text-align: center">
+        {{ language_code }}
+    </h2>
 
-        </div>
-            {% if article.embedded_video_url %}
-
-            <div class="embedded_video">
-                <iframe src="{{ article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-
-            {% endif %}
+    <p class="center top_article_abstract">
+        {{top_article.abstract | urlize}}
+    </p>
 
 
-        </div>
+    {% if top_article.embedded_video_url %}
 
-        {% endfor %}
+    <div class="top_embedded_video">
+        <iframe allow="autoplay; fullscreen" allowfullscreen frameborder="0" height="360"
+                src="{{ top_article.embedded_video_url }}" width="640"></iframe>
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+
+<div class="article_container">
+
+    {% if language_preference == "de" %}
+    <h1 class="sub_title center">Neueste Blogeinträge:</h1>
+
+    {% else %}
+    <h1 class="sub_title center">Latest Blog Entries:</h1>
+
+    {% endif %}
+
+
+</div>
+
+{% for article in latest_article_list %}
+
+<div class="article_container">
+    <h2 class="center"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h2>
+
+    <p class="center article_text">
+        {{article.publication_datetime |date:"d M, Y"}}
+    </p>
+    <p class="center article_text">
+        {{article.abstract}}
+    </p>
+
+</div>
+
+{% if article.embedded_video_url %}
+
+<div class="embedded_video">
+    <iframe allow="autoplay; fullscreen" allowfullscreen frameborder="0" height="360"
+            src="{{ article.embedded_video_url }}" width="640"></iframe>
+</div>
+
+{% endif %}
+
+
+{% endfor %}
 
 {% endblock %}

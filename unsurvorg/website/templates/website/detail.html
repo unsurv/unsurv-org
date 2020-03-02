@@ -13,6 +13,10 @@
             <h1 class="center">{{ article.title }}</h1>
 
             <p class="center article_text">
+                {{article.publication_datetime |date:"d M, Y"}}
+            </p>
+
+            <p class="center article_text">
                 {{article.text | urlize}}
             </p>
 
