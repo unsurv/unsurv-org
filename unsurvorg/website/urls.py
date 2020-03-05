@@ -15,4 +15,8 @@ urlpatterns = [
     # ex: /blog/this-is-a-slug/
     path('blog/<slug:slug>/', views.detail_slug, name='detail_slug'),
 
+    path('contact', views.contact, name='contact'),
+
+    path('privacy', views.privacy, name='privacy'),
+
 ]

@@ -9,9 +9,9 @@ from .models import Article, TranslatedArticle
 def index(request):
 
     # get browser language preference
-    raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    language_preference = select_language(raw_language_code)
+    language_preference = select_language(raw_http_accept)
 
     # get latest articles
 
@@ -31,7 +31,7 @@ def index(request):
         'language_preference': language_preference,
         'top_article': top_article,
         'latest_article_list': latest_article_list,
-        'language_code': raw_language_code,
+        'language_code': raw_http_accept,
     }
 
     return render(request, 'website/index.html', context)
@@ -45,9 +45,9 @@ def detail(request, article_id):
 def detail_slug(request, slug):
 
     # get browser language preference
-    raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    language_preference = select_language(raw_language_code)
+    language_preference = select_language(raw_http_accept)
 
     if language_preference == "de":
         article = TranslatedArticle.objects.filter(language=language_preference).get(slug=slug)
@@ -57,7 +57,7 @@ def detail_slug(request, slug):
     context = {
         'language_preference': language_preference,
         'article': article,
-        'language_code': raw_language_code,
+        'language_code': raw_http_accept,
     }
 
     return render(request, 'website/detail.html', context)
@@ -65,8 +65,8 @@ def detail_slug(request, slug):
 
 def blog_overview(request):
 
-    raw_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    language_preference = select_language(raw_language_code)
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    language_preference = select_language(raw_http_accept)
 
     if language_preference == "de":
 
@@ -79,12 +79,55 @@ def blog_overview(request):
     context = {
         'language_preference': language_preference,
         'blog_overview_list': blog_overview_list,
-        'language_code': raw_language_code,
+        'language_code': raw_http_accept,
     }
 
     return render(request, 'website/blog_overview.html', context)
 
+# TODO combine contact + privacy to single function
+def contact(request):
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    language_preference = select_language(raw_http_accept)
 
+    if language_preference == "de":
+
+        info_article = TranslatedArticle.objects.filter(language=language_preference) \
+                                 .get(title="contact")
+
+    else:
+        info_article = Article.objects.get(title="contact")
+
+    context = {
+        'language_preference': language_preference,
+        'info': info_article,
+        'language_code': raw_http_accept,
+    }
+
+    return render(request, 'website/info_template.html', context)
+
+
+def privacy(request):
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    language_preference = select_language(raw_http_accept)
+
+    if language_preference == "de":
+
+        info_article = TranslatedArticle.objects.filter(language=language_preference) \
+                                 .get(title="privacy")
+
+    else:
+        info_article = Article.objects.get(title="privacy")
+
+    context = {
+        'language_preference': language_preference,
+        'info': info_article,
+        'language_code': raw_http_accept,
+    }
+
+    return render(request, 'website/info_template.html', context)
+
+
+# expand if more translations available
 def select_language(http_accept_language_string):
     if "de" in http_accept_language_string:
         return "de"
