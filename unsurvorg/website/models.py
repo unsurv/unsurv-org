@@ -20,6 +20,9 @@ class Article(models.Model):
 
     slug = models.SlugField(null=False, unique=True)
 
+    # app uses regular articles for info pages (/contact or /privacy), enables filtering for those
+    is_info_page = models.BooleanField(default=False)
+
     def __str__(self):
         return self.slug
 
@@ -46,6 +49,8 @@ class TranslatedArticle(models.Model):
     last_updated_datetime = models.DateTimeField("last_updated", auto_now=True)
 
     slug = models.SlugField(null=False)
+
+    is_info_page = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

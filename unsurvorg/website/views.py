@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Article, TranslatedArticle
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -19,13 +19,14 @@ def index(request):
     if language_preference == "de":
 
         latest_article_list = TranslatedArticle.objects.filter(language=language_preference) \
+                                  .exclude(is_info_page=True) \
                                   .order_by('-publication_datetime')[:5]
 
         top_article = TranslatedArticle.objects.filter(language=language_preference) \
             .get(keep_top_position=True)
     else:
         top_article = Article.objects.get(keep_top_position=True)
-        latest_article_list = Article.objects.order_by('-publication_datetime')[:5]
+        latest_article_list = Article.objects.exclude(is_info_page=True).order_by('-publication_datetime')[:5]
 
     context = {
         'language_preference': language_preference,
@@ -71,10 +72,11 @@ def blog_overview(request):
     if language_preference == "de":
 
         blog_overview_list = TranslatedArticle.objects.filter(language=language_preference) \
+                                 .exclude(is_info_page=True) \
                                  .order_by('-publication_datetime')[:20]
 
     else:
-        blog_overview_list = Article.objects.order_by('-publication_datetime')[:20]
+        blog_overview_list = Article.objects.exclude(is_info_page=True).order_by('-publication_datetime')[:20]
 
     context = {
         'language_preference': language_preference,
