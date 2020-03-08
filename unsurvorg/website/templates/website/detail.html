@@ -6,10 +6,7 @@
 
 
         <div class="article_container">
-
-
-
-
+            
             <h1 class="center">{{ article.title }}</h1>
 
             <p class="center article_text">
@@ -17,7 +14,7 @@
             </p>
 
             <p class="center article_text">
-                {{article.text | urlize}}
+                {{article.text | safe}}
             </p>
 
             {% if article.embedded_video_url %}
