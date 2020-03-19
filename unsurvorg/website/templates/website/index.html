@@ -6,10 +6,6 @@
 
 <div class="article_container">
 
-    <h2 style="text-align: center">
-        {{ language_code }}
-    </h2>
-
     <p class="center top_article_abstract">
         {{top_article.abstract | safe}}
     </p>
@@ -54,15 +50,6 @@
     </p>
 
 </div>
-
-{% if article.embedded_video_url %}
-
-<div class="embedded_video">
-    <iframe allow="autoplay; fullscreen" allowfullscreen frameborder="0" height="360"
-            src="{{ article.embedded_video_url }}" width="640"></iframe>
-</div>
-
-{% endif %}
 
 
 {% endfor %}

@@ -24,7 +24,6 @@ h1, h2, h3 {
 
 .sub_title{
     text-align: center;
-    margin-bottom: 40px;
 }
 
 .navigation {
@@ -33,11 +32,13 @@ h1, h2, h3 {
     height: 40px;
     width: 100%;
     text-align: center;
+    margin-top: 40px;
 }
 
 .article_container {
-    margin-top: 65px;
-    margin-bottom: 65px;
+    margin-top: 55px;
+    margin-bottom: 55px;
+    padding-bottom:10px;
 }
 
 .article_text {
@@ -71,9 +72,6 @@ h1, h2, h3 {
     margin: auto;
 }
 
-.header_image {
-    margin: 0 auto;
-}
 
 h2.header_text{
     font-size: xxx-large
@@ -87,20 +85,26 @@ h2.header_text{
 .center {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 66%;
+}
+
+.footer_text {
+    font-weight: bold;
+    line-height: 40px;
 }
 
 .box {
   float: left;
   width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
+  height: 40px;
+  margin: 0;
 }
-
 
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    height: auto;
+    height: 40px;
     width: 100%;
     text-align: center;
     background-color: #2d2d2d;
