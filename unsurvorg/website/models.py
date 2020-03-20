@@ -36,7 +36,7 @@ class Article(models.Model):
 
 
 class TranslatedArticle(models.Model):
-    article = models.ForeignKey(Article, related_name="translations", on_delete="CASCADE")
+    article = models.ForeignKey(Article, related_name="translations", on_delete=models.CASCADE)
     language = models.CharField(max_length=2)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -57,7 +57,7 @@ class TranslatedArticle(models.Model):
 
 
 class Images(models.Model):
-    article = models.ForeignKey(Article, related_name="images", on_delete="CASCADE")
+    article = models.ForeignKey(Article, related_name="images", on_delete=models.CASCADE)
 
     low_res = models.ImageField(blank=True, upload_to="images/low_res")
     high_res = models.ImageField(blank=True, upload_to="images/high_res")

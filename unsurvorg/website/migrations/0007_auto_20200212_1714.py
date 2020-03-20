@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('keep_top_position', models.BooleanField(default=False)),
                 ('publication_datetime', models.DateTimeField(auto_now=True, verbose_name='date_published')),
                 ('last_updated_datetime', models.DateTimeField(auto_now=True, verbose_name='last_updated')),
-                ('article', models.ForeignKey(on_delete='CASCADE', related_name='translations', to='website.Article')),
+                ('article', models.ForeignKey(on_delete=models.CASCADE, related_name='translations', to='website.Article')),
             ],
         ),
     ]

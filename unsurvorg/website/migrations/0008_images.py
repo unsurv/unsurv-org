@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('high_res1', models.ImageField(blank=True, upload_to='images/high_res')),
                 ('low_res2', models.ImageField(blank=True, upload_to='images/low_res')),
                 ('high_res2', models.ImageField(blank=True, upload_to='images/high_res')),
-                ('article', models.ForeignKey(on_delete='CASCADE', related_name='images', to='website.Article')),
+                ('article', models.ForeignKey(on_delete=models.CASCADE, related_name='images', to='website.Article')),
             ],
         ),
     ]
