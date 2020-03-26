@@ -86,6 +86,7 @@ def blog_overview(request):
 
     return render(request, 'website/blog_overview.html', context)
 
+
 # TODO combine contact + privacy to single function
 def contact(request):
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")

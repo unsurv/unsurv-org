@@ -2,7 +2,7 @@
 *.pot
 *.pyc
 __pycache__
-db.sqlite3
+*.sqlite3
 media
 
 venv/
@@ -21,3 +21,4 @@ venv/
 .idea/**/gradle.xml
 .idea/**/libraries
 *.iws /out/
+/unsurvorg/unsurvorg/settings.py
