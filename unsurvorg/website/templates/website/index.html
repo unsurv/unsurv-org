@@ -8,6 +8,14 @@
 
     <p class="center top_article_abstract">
         {{top_article.abstract | safe}}
+        <br>
+
+        {% if language_preference == "de" %}
+            <a class="center" href="/blog/unsurv">*mehr*</a>
+        {% else %}
+            <a class="center" href="/blog/unsurv">*more*</a>
+        {% endif %}
+
     </p>
 
 
@@ -46,7 +54,7 @@
         {{article.publication_datetime |date:"d M, Y"}}
     </p>
     <p class="center article_text">
-        {{article.abstract}}
+        {{article.abstract | safe}}
     </p>
 
 </div>
