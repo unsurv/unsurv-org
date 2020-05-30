@@ -59,8 +59,8 @@ class TranslatedArticle(models.Model):
 class Images(models.Model):
     article = models.ForeignKey(Article, related_name="images", on_delete=models.CASCADE)
 
-    low_res = models.ImageField(blank=True, upload_to="images/low_res")
-    high_res = models.ImageField(blank=True, upload_to="images/high_res")
+    low_res_url = models.URLField(blank=True)
+    high_res_url = models.URLField(blank=True)
 
 
 

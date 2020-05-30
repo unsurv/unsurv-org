@@ -78,8 +78,11 @@ h2.header_text{
     font-weight: bold;
 }
 
-.image {
-    margin: auto;
+a.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 640px;
 }
 
 .center {
