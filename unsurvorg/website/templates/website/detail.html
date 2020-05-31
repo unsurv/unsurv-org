@@ -28,6 +28,23 @@
             {% endif %}
 
 
+            {% if article.article %}
+
+            {% for image in article.article.images.all %}
+
+            <a class="image" href="{{ image.high_res_url }}">
+                <img src="{{ image.low_res_url }}" width="640" height="480">
+            </a>
+
+            <p class="center image_description">
+                {{ image.description }}
+            </p>
+
+            {% endfor %}
+
+
+            {% else %}
+
 
             {% for image in article.images.all %}
 
@@ -40,6 +57,13 @@
             </p>
 
             {% endfor %}
+
+
+            {% endif %}
+
+
+
+
 
 
 
