@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'charter regular'; /*a name to be used later*/
-    src: url('../fonts/Charter Regular.ttf'); /*URL to font*/
+    src: url('https://unsurv.org/static/fonts/Charter%20Regular.ttf'); /*URL to font*/
 }
 
 body {
