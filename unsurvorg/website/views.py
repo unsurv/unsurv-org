@@ -11,7 +11,13 @@ def index(request):
     # get browser language preference
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    language_preference = select_language(raw_http_accept)
+
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
+
 
     # get latest articles
 
@@ -48,7 +54,11 @@ def detail_slug(request, slug):
     # get browser language preference
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
     # choose from two languages for now
-    language_preference = select_language(raw_http_accept)
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
 
     if language_preference == "de":
         article = TranslatedArticle.objects.filter(language=language_preference).get(slug=slug)
@@ -67,7 +77,11 @@ def detail_slug(request, slug):
 def blog_overview(request):
 
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    language_preference = select_language(raw_http_accept)
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
 
     if language_preference == "de":
 
@@ -90,7 +104,11 @@ def blog_overview(request):
 # TODO combine contact + privacy to single function
 def contact(request):
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    language_preference = select_language(raw_http_accept)
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
 
     if language_preference == "de":
 
@@ -111,7 +129,11 @@ def contact(request):
 
 def privacy(request):
     raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
-    language_preference = select_language(raw_http_accept)
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
 
     if language_preference == "de":
 
