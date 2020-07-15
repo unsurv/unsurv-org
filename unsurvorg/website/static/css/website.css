@@ -10,15 +10,17 @@ body {
 
 h1, h2, h3 {
     color: #bababa;
+    font-size: 150%;
 
 }
+
 .main_title_container{
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .main_title{
-    font-size: 300%;
+    font-size: 350%;
     text-align: center;
 }
 
@@ -47,7 +49,7 @@ h1, h2, h3 {
     color: #bababa;
 
     font-family: "charter regular";
-    font-size: 120%;
+    font-size: 150%;
 
 }
 
@@ -55,7 +57,7 @@ h1, h2, h3 {
     text-align: center;
     color: #bababa;
 
-    font-size: 130%;
+    font-size: 170%;
     font-family: "charter regular";
     margin-bottom: 65px;
     margin-top: 65px;
@@ -93,7 +95,7 @@ a.image {
 .center {
     margin-left: auto;
     margin-right: auto;
-    width: 66%;
+    width: 80%;
 }
 
 .footer_text {
