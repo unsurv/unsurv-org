@@ -152,6 +152,30 @@ def privacy(request):
     return render(request, 'website/info_template.html', context)
 
 
+def info(request):
+    raw_http_accept = request.META.get("HTTP_ACCEPT_LANGUAGE")
+    # default to "en"
+    if raw_http_accept:
+        language_preference = select_language(raw_http_accept)
+    else:
+        language_preference = "en"
+
+    if language_preference != "en":
+
+        info_article = get_object_or_404(TranslatedArticle, language= language_preference, slug="info")
+
+    else:
+        info_article = get_object_or_404(Article, language= language_preference, slug="info")
+
+    context = {
+        'language_preference': language_preference,
+        'info': info_article,
+        'language_code': raw_http_accept,
+    }
+
+    return render(request, 'website/info_template.html', context)
+
+
 # expand if more translations available
 def select_language(http_accept_language_string):
     if "de" in http_accept_language_string:

@@ -99,8 +99,6 @@ a.image {
 }
 
 .footer_text {
-    font-size: 150%;
-    font-weight: bold;
     line-height: 50px;
 }
 
@@ -112,13 +110,10 @@ a.image {
 }
 
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    margin-bottom: 30px;
     height: 50px;
     width: 100%;
     text-align: center;
-    background-color: #2d2d2d;
 }
 
 .unmarked_link {
