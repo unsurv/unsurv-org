@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Article, TranslatedArticle
-from django.db.models import Q
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
+
+# TODO button to choose language
 
 
 def index(request):
@@ -17,7 +19,6 @@ def index(request):
         language_preference = select_language(raw_http_accept)
     else:
         language_preference = "en"
-
 
     # get latest articles
 
@@ -59,11 +60,10 @@ def detail_slug(request, slug):
         language_preference = select_language(raw_http_accept)
     else:
         language_preference = "en"
-
-    if language_preference == "de":
-        article = TranslatedArticle.objects.filter(language=language_preference).get(slug=slug)
-    else:
-        article = get_object_or_404(Article, slug=slug)
+    try:
+        article = Article.objects.get(slug=slug)
+    except ObjectDoesNotExist:
+        article = get_object_or_404(TranslatedArticle, slug=slug)
 
     context = {
         'language_preference': language_preference,
