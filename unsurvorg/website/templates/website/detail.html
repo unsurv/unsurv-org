@@ -9,6 +9,10 @@
             
             <h1 class="center">{{ article.title }}</h1>
 
+            <h2 class="center">
+                <a href=/blog/{{translations.de}}>de</a> / <a href=/blog/{{translations.en}}>en</a>
+            </h2>
+
             <p class="center article_text">
                 {{article.publication_datetime |date:"d M, Y"}}
             </p>
