@@ -83,8 +83,6 @@ def detail_slug(request, slug):
     for translation in translated_articles:
         available_slugs[translation.language] = translation.slug
 
-    print(available_slugs)
-
     context = {
         'language_preference': language_preference,
         'translations': available_slugs,

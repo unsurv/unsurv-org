@@ -8,9 +8,22 @@ body {
 
 }
 
-h1, h2, h3 {
+h1 {
+
     color: #bababa;
-    font-size: 180%;
+    font-size: calc(30px + 1.8vh);
+
+}
+
+h2 {
+    color: #bababa;
+    font-size: calc(25px + 1.8vh);
+
+}
+
+h3 {
+    color: #bababa;
+    font-size: calc(15px + 1.8vh);
 
 }
 
@@ -20,11 +33,12 @@ h1, h2, h3 {
 }
 
 .main_title{
-    font-size: 350%;
+    font-size: calc(40px + 1.8vh);
     text-align: center;
 }
 
 .sub_title{
+    margin-top: 60px;
     text-align: center;
 }
 
@@ -34,22 +48,26 @@ h1, h2, h3 {
     height: 40px;
     width: 100%;
     text-align: center;
-    margin-top: 40px;
+    margin-top:     50px;
+    margin-bottom:  50px;
 }
 
 .article_container {
-    margin-top: 55px;
+    margin-top: 30px;
     margin-bottom: 55px;
     padding-bottom:10px;
+
+    display: grid;
+    grid-template-columns: minmax(20px, 20vw) calc(60% + 20vh) minmax(20px, 20vw);
 }
 
 .article_text {
     text-align: justify;
-    text-justify: inter-word;
+    text-justify: auto;
     color: #bababa;
 
     font-family: "charter regular";
-    font-size: 150%;
+    font-size: calc(10px + 2vh);
 
 }
 
@@ -57,10 +75,10 @@ h1, h2, h3 {
     text-align: center;
     color: #bababa;
 
-    font-size: 170%;
+    font-size: calc(10px + 2vh);
     font-family: "charter regular";
     margin-bottom: 65px;
-    margin-top: 65px;
+
 }
 
 .top_embedded_video {
@@ -92,15 +110,12 @@ a.image {
     width: 640px;
 }
 
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+.heading {
+
+    margin-top: 50px;
 }
 
-.footer_text {
-    line-height: 50px;
-}
+
 
 .box {
   float: left;

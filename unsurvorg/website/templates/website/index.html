@@ -5,61 +5,65 @@
 
 
 <div class="article_container">
+    <div class="spacer">
 
-    <p class="center top_article_abstract">
-        {{top_article.abstract | safe}}
-        <br>
-
-        {% if language_preference == "de" %}
-            <a class="center" href="/blog/unsurv">*mehr*</a>
-        {% else %}
-            <a class="center" href="/blog/unsurv">*more*</a>
-        {% endif %}
-
-    </p>
-
-
-    {% if top_article.embedded_video_url %}
-
-    <div class="top_embedded_video">
-        <iframe allow="autoplay; fullscreen" allowfullscreen frameborder="0" height="360"
-                src="{{ top_article.embedded_video_url }}" width="640"></iframe>
     </div>
 
-    {% endif %}
+    <div class="content">
 
 
+        <p class="top_article_abstract">
+            {{top_article.abstract | safe}}
+            <br>
+
+            {% if language_preference == "de" %}
+            <a class="" href="/blog/unsurv">*mehr*</a>
+            {% else %}
+            <a class="" href="/blog/unsurv">*more*</a>
+            {% endif %}
+
+        </p>
+
+
+        {% if top_article.embedded_video_url %}
+
+        <div class="top_embedded_video">
+            <iframe allow="autoplay; fullscreen" allowfullscreen frameborder="0" height="360"
+                    src="{{ top_article.embedded_video_url }}" width="640"></iframe>
+        </div>
+
+        {% endif %}
+
+
+        {% if language_preference == "de" %}
+        <h2 class="sub_title">Neueste Blogeinträge:</h2>
+
+        {% else %}
+        <h2 class="sub_title">Latest Blog Entries:</h2>
+
+        {% endif %}
+
+
+        {% for article in latest_article_list %}
+
+
+        <h3 class="heading"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h3>
+
+        <p class="article_text">
+            {{article.publication_datetime |date:"d M, Y"}}
+        </p>
+        <p class="article_text">
+            {{article.abstract | safe}}
+        </p>
+
+
+        {% endfor %}
+
+    </div>
+
+    <div class="spacer">
+
+    </div>
 </div>
-
-
-<div class="article_container">
-
-    {% if language_preference == "de" %}
-    <h1 class="sub_title center">Neueste Blogeinträge:</h1>
-
-    {% else %}
-    <h1 class="sub_title center">Latest Blog Entries:</h1>
-
-    {% endif %}
-
-
-</div>
-
-{% for article in latest_article_list %}
-
-<div class="article_container">
-    <h2 class="center"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h2>
-
-    <p class="center article_text">
-        {{article.publication_datetime |date:"d M, Y"}}
-    </p>
-    <p class="center article_text">
-        {{article.abstract | safe}}
-    </p>
-
-</div>
-
-
-{% endfor %}
 
 {% endblock %}

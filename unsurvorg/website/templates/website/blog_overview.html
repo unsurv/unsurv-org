@@ -3,19 +3,35 @@
 
 {% block content %}
 
+
+<div class="article_container">
+    <div class="spacer">
+    </div>
+
+
+    <div class="previews">
+
         {% for article in blog_overview_list %}
-        <div class="article_container">
-            <h1 class="center"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h1>
 
-            <p class="center article_text">
-                {{article.publication_datetime |date:"d M, Y"}}
-            </p>
-            <p class="center article_text">
-                {{article.abstract}}
-            </p>
 
-        </div>
+        <h2 class="heading"><a class="unmarked_link" href="/blog/{{ article.slug }}/">{{ article.title }}</a></h2>
+
+        <p class="article_text">
+            {{article.publication_datetime |date:"d M, Y"}}
+        </p>
+        <p class="article_text">
+            {{article.abstract}}
+        </p>
+
 
         {% endfor %}
+
+    </div>
+
+    <div class="spacer">
+    </div>
+
+</div>
+
 
 {% endblock %}
