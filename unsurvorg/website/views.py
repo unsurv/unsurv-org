@@ -65,8 +65,27 @@ def detail_slug(request, slug):
     except ObjectDoesNotExist:
         article = get_object_or_404(TranslatedArticle, slug=slug)
 
+
+    available_slugs = {}
+
+
+    try:
+        original_article = Article.objects.get(slug=slug)
+
+    except ObjectDoesNotExist:
+        # current article is a translated one, get original
+        original_article = TranslatedArticle.objects.get(slug=slug).article
+
+    available_slugs["en"] = original_article.slug
+
+    translated_articles = original_article.translations.all()
+
+    for translation in translated_articles:
+        available_slugs[translation.language] = translation.slug
+
     context = {
         'language_preference': language_preference,
+        'translations': available_slugs,
         'article': article,
         'language_code': raw_http_accept,
     }

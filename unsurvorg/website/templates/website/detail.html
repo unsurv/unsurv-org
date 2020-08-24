@@ -4,79 +4,86 @@
 {% block content %}
 
 
+<div class="article_container">
+    <div class="spacer">
+    </div>
 
-        <div class="article_container">
-            
-            <h1 class="center">{{ article.title }}</h1>
+    <div class="content">
 
-            <p class="center article_text">
-                {{article.publication_datetime |date:"d M, Y"}}
-            </p>
+        <h2>{{ article.title }}</h2>
 
-            <p class="center article_text">
-                {{article.text | safe}}
-            </p>
+        <h2 class="center">
+            <a href=/blog/{{translations.de}}>de</a> / <a href=/blog/{{translations.en}}>en</a>
+        </h2>
 
-            {% if article.embedded_video_url %}
+        <p class="center article_text">
+            {{article.publication_datetime |date:"d M, Y"}}
+        </p>
 
-            <div class="embedded_video">
-                <iframe src="{{ article.embedded_video_url }}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
+        <p class="center article_text">
+            {{article.text | safe}}
+        </p>
 
+        {% if article.embedded_video_url %}
 
-
-            {% endif %}
-
-
-            {% if article.article %}
-
-            {% for image in article.article.images.all %}
-
-            <a class="image" href="{{ image.high_res_url }}">
-                <img src="{{ image.low_res_url }}" width="640" height="480">
-            </a>
-
-            <p class="center image_description">
-                {{ image.description }}
-            </p>
-
-            {% endfor %}
-
-
-            {% else %}
-
-
-            {% for image in article.images.all %}
-
-            <a class="image" href="{{ image.high_res_url }}">
-                <img src="{{ image.low_res_url }}" width="640" height="480">
-            </a>
-
-            <p class="center image_description">
-                {{ image.description }}
-            </p>
-
-            {% endfor %}
-
-
-            {% endif %}
-
-
-
-
-
-
-
-
-            {% if article.text_after_media %}
-
-            <p class="center article_text">
-                {{article.text_after_media}}
-            </p>
-
-            {% endif %}
-
+        <div class="embedded_video">
+            <iframe src="{{ article.embedded_video_url }}" width="640" height="360" frameborder="0"
+                    allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
+
+
+        {% endif %}
+
+
+        {% if article.article %}
+
+        {% for image in article.article.images.all %}
+
+        <a class="image" href="{{ image.high_res_url }}">
+            <img src="{{ image.low_res_url }}" width="640" height="480">
+        </a>
+
+        <p class="center image_description">
+            {{ image.description }}
+        </p>
+
+        {% endfor %}
+
+
+        {% else %}
+
+
+        {% for image in article.images.all %}
+
+        <a class="image" href="{{ image.high_res_url }}">
+            <img src="{{ image.low_res_url }}" width="640" height="480">
+        </a>
+
+        <p class="center image_description">
+            {{ image.description }}
+        </p>
+
+        {% endfor %}
+
+
+        {% endif %}
+
+
+        {% if article.text_after_media %}
+
+        <p class="center article_text">
+            {{article.text_after_media}}
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="spacer">
+    </div>
+
+</div>
 
 
 {% endblock %}
